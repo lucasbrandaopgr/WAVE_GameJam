@@ -36,3 +36,8 @@ if(_col){
 }
 
 y	+= velv;
+
+//Virando o sprite pra onde a entidade olha
+//(o origin dos sprites está no centro, então não trava na parede)
+//Se a arte original olha pra ESQUERDA, troque por: image_xscale = -dir;
+image_xscale = dir;
