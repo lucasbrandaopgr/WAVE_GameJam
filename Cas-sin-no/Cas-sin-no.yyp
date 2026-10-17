@@ -15,8 +15,8 @@
     {"$GMFolder":"","%Name":"efects","folderPath":"folders/Assets/songs/efects.yy","name":"efects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"music","folderPath":"folders/Assets/songs/music.yy","name":"music","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"sprites","folderPath":"folders/Assets/sprites.yy","name":"sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"enemy","folderPath":"folders/Assets/sprites/enemy.yy","name":"enemy","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"elementos","folderPath":"folders/Assets/sprites/elementos.yy","name":"elementos","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"enemy","folderPath":"folders/Assets/sprites/enemy.yy","name":"enemy","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"player","folderPath":"folders/Assets/sprites/player.yy","name":"player","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"objetos","folderPath":"folders/objetos.yy","name":"objetos","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
@@ -25,7 +25,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.4.222",
+    "IDEVersion":"2026.0.0.16",
   },
   "name":"Cas-sin-no",
   "resources":[
@@ -33,7 +33,9 @@
     {"id":{"name":"oEnemy","path":"objects/oEnemy/oEnemy.yy",},},
     {"id":{"name":"oEntidade","path":"objects/oEntidade/oEntidade.yy",},},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},},
+    {"id":{"name":"oVelho","path":"objects/oVelho/oVelho.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"rVelho","path":"rooms/rVelho/rVelho.yy",},},
     {"id":{"name":"mGameplay","path":"sounds/mGameplay/mGameplay.yy",},},
     {"id":{"name":"mInit","path":"sounds/mInit/mInit.yy",},},
     {"id":{"name":"mMoeda","path":"sounds/mMoeda/mMoeda.yy",},},
@@ -49,11 +51,13 @@
     {"id":{"name":"sChao","path":"sprites/sChao/sChao.yy",},},
     {"id":{"name":"sEnemy","path":"sprites/sEnemy/sEnemy.yy",},},
     {"id":{"name":"sPlayer","path":"sprites/sPlayer/sPlayer.yy",},},
+    {"id":{"name":"sVelho","path":"sprites/sVelho/sVelho.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"roomId":{"name":"rVelho","path":"rooms/rVelho/rVelho.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

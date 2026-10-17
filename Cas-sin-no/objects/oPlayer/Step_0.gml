@@ -17,3 +17,21 @@ if(_chao){
 	//Aplico a gravidade
 	velv += grav;
 }
+//Direção que o player está olhando
+if(velh != 0) dir = sign(velh);
+
+//Piscar quando está invencível
+if(invul > 0) invul--;
+image_alpha = (invul > 0 && (invul div 4) mod 2) ? .4 : 1;
+
+//Golpe
+if(atk_cd > 0) atk_cd--;
+
+if(keyboard_check_pressed(inputs.golpe) && atk_cd <= 0){
+	atk_cd = 20;
+	audio_play_sound(mSoco, 1, false);
+	
+	//Procura um inimigo na frente (28 pixels de alcance, ajuste ao seu sprite)
+	var _alvo = instance_place(x + dir * 28, y, oEnemy);
+	if(_alvo) _alvo.levar_dano(1 + global.dmg_bonus, x);
+}
