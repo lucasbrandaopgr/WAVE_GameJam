@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"mPulo",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.091043085,
+  "exportDir":"",
+  "name":"mPulo",
+  "parent":{
+    "name":"efects",
+    "path":"folders/Assets/songs/efects.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"mPulo.wav",
+  "volume":0.51,
+}

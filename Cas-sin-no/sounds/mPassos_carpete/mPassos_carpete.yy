@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"mPassos_carpete",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":2.25,
+  "exportDir":"",
+  "name":"mPassos_carpete",
+  "parent":{
+    "name":"efects",
+    "path":"folders/Assets/songs/efects.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"mPassos_carpete.mp3",
+  "volume":0.55,
+}

@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"mMusic_menu",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":45.32535,
+  "exportDir":"",
+  "name":"mMusic_menu",
+  "parent":{
+    "name":"music",
+    "path":"folders/Assets/songs/music.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"mMusic_menu.mp3",
+  "volume":0.11,
+}

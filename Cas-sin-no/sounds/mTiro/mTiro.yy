@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"mTiro",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":1.3437415,
+  "exportDir":"",
+  "name":"mTiro",
+  "parent":{
+    "name":"efects",
+    "path":"folders/Assets/songs/efects.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"mTiro.mp3",
+  "volume":1.0,
+}
