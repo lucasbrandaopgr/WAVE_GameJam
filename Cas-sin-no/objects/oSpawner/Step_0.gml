@@ -11,7 +11,7 @@ if(instance_exists(oPlayer) && abs(oPlayer.x - x) < 220) exit;
 
 var _r = irandom(99);
 var _tipo = oEnemy;
-if(_r >= 70) _tipo = oEnemyPulador;
-else if(_r >= 40) _tipo = oEnemyPistola;
+
+ if(_r >= 40) _tipo = oEnemyPistola;
 
 instance_create_depth(x, y, -10, _tipo);

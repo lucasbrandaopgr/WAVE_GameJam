@@ -22,12 +22,5 @@ if(atk_vis > 0){
 		draw_line_width(x + lengthdir_x(_alc * .55, _a1), _cy + lengthdir_y(_alc * .55, _a1),
 						x + lengthdir_x(_alc * .55, _a2), _cy + lengthdir_y(_alc * .55, _a2), 2);
 	}
-	
-	//Debug: mostra a área real do soco
-	if(global.debug){
-		draw_set_color(c_red);
-		draw_rectangle(x - dir * 8, y - 46, x + dir * _alc, y + 6, true);
-	}
-	draw_set_alpha(1);
-	draw_set_color(c_white);
+
 }

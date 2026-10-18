@@ -14,7 +14,7 @@ parado	= false;	//Os filhos usam pra ficar parados (ex: atirando)
 alma	= 1;		//Quantas almas solta ao morrer
 dano	= 1;		//Dano de contato / dos tiros
 moedas_min	= 1;	//Moedas que caem ao morrer (sorteia entre min e max)
-moedas_max	= 3;
+moedas_max	= 2;
 cor_base	= c_white;
 
 levar_dano = function(_dano, _x_origem){
