@@ -1,8 +1,14 @@
-velh		= 0;
-velv		= 0;
-vel			= 5;
-grav		= .3;
+event_inherited();
+
+//Personalizando as variáveis
 vel_jump	= 9;
+atk_cd		= 0;
+atk_vis		= 0;	//Frames mostrando o arco do soco
+combo		= 0;	//O 3º soco seguido bate mais forte
+combo_t		= 0;
+dash_t		= 0;	//Frames de dash restantes
+dash_cd		= 0;	//Recarga do dash
+bloq		= 0;	//Frames sem agir logo depois de fechar um menu (evita soco no clique)
 
 inputs	= {
 		left	: ord("A"),
@@ -10,29 +16,23 @@ inputs	= {
 		pulo	: vk_space,
 		golpe	: ord("F")
 }
-dir		= 1;
-invul	= 0;	//Frames de invencibilidade depois de levar dano
-atk_cd	= 0;	//Tempo de recarga do golpe
 
-//Variáveis globais (só criam na primeira vez, pra não resetar ao trocar de sala)
-if(!variable_global_exists("hp_max")){
-	global.hp_max		= 10;
-	global.hp			= 10;
-	global.moedas		= 0;
-	global.almas		= 0;
-	global.dmg_bonus	= 0;
+//Se começar o jogo direto numa sala (debug), cria o controlador do jogo
+if(!instance_exists(oGame)) instance_create_depth(0, 0, 0, oGame);
+
+//Alcance do soco em pixels (melhora comprando no velho)
+alcance_soco = function(){
+	return 72 + global.alcance_bonus * 20;
 }
 
+//Chamado pelos inimigos e balas
 levar_dano = function(_dano){
-	if(invul > 0) exit;
+	if(invul > 0 || global.pausado) return;
 	
 	global.hp	-= _dano;
 	invul		= 60;
 	velv		= -4;	//Pulinho de susto
+	audio_play_sound(mSoco, 1, false);
 	
-	//Morreu: o imortal volta na sala do velho
-	if(global.hp <= 0){
-		global.hp = global.hp_max;
-		room_goto(rVelho);
-	}
+	if(global.hp <= 0) game_morrer();
 }
