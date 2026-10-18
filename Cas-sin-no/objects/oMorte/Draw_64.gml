@@ -5,6 +5,9 @@ var _cx = _gw / 2;
 draw_set_color(c_black);
 draw_rectangle(0, 0, _gw, _gh, false);
 
+//Fonte da tela de morte (a mesma do menu)
+draw_set_font(fMenu);
+
 draw_set_alpha(alpha);
 
 ui_texto(_cx, _gh * .26, "VOCÊ MORREU", c_red, 4);
@@ -25,6 +28,7 @@ if(timer > 60){
 }
 
 //Volta o estado padrão do desenho
+draw_set_font(-1);
 draw_set_alpha(1);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);

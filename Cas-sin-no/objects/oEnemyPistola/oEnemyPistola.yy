@@ -34,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sEnemyPistola",
-    "path":"sprites/sEnemyPistola/sEnemyPistola.yy",
+    "name":"SAmanda",
+    "path":"sprites/SAmanda/SAmanda.yy",
   },
   "spriteMaskId":null,
   "visible":true,

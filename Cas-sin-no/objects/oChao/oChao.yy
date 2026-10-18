@@ -32,5 +32,5 @@
     "path":"sprites/sChao/sChao.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

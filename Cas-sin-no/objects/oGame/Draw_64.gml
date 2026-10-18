@@ -1,6 +1,7 @@
 var _gw = display_get_gui_width();
 var _gh = display_get_gui_height();
 
+draw_set_font(fMenu);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_set_alpha(1);
@@ -8,6 +9,7 @@ draw_set_alpha(1);
 //=== HUD ===
 if(sala_de_jogo()){
 	var _x = 16, _y = 16, _larg = 22;
+	var _lh = string_height("A") + 4;	//altura de uma linha de texto na fonte atual
 	
 	//Barra de HP (10 de vida = 10 blocos)
 	draw_set_color(c_black);
@@ -17,28 +19,30 @@ if(sala_de_jogo()){
 	draw_set_color(c_red);
 	draw_rectangle(_x, _y, _x + max(global.hp, 0) * _larg, _y + 16, false);
 	
+	var _ty = _y + 24;
 	draw_set_color(c_white);
-	draw_text(_x, _y + 24, "HP " + string(global.hp) + "/" + string(global.hp_max)
+	draw_text(_x, _ty, "HP " + string(global.hp) + "/" + string(global.hp_max)
 		+ "     Moedas: " + string(global.moedas)
 		+ "     Almas: " + string(global.almas)
 		+ "     Andar: " + string(global.nivel + 1));
 	
-	//Barra do dash
+	//Barra do dash (logo abaixo do texto)
+	var _dy = _ty + _lh + 4;
 	if(instance_exists(oPlayer)){
 		var _dmax	= max(20, 60 - global.dash_bonus * 10);
 		var _pronto	= 1 - clamp(oPlayer.dash_cd / _dmax, 0, 1);
 		draw_set_color(c_black);
-		draw_rectangle(_x - 1, _y + 46, _x + 101, _y + 56, false);
+		draw_rectangle(_x - 1, _dy, _x + 101, _dy + 10, false);
 		draw_set_color((_pronto >= 1) ? c_aqua : c_teal);
-		draw_rectangle(_x, _y + 47, _x + 100 * _pronto, _y + 55, false);
+		draw_rectangle(_x, _dy + 1, _x + 100 * _pronto, _dy + 9, false);
 		draw_set_color(c_white);
-		draw_text(_x + 108, _y + 44, (_pronto >= 1) ? "DASH pronto" : "DASH");
+		draw_text(_x + 108, _dy - 2, (_pronto >= 1) ? "DASH pronto" : "DASH");
 	}
 	
 	//Efeito ativo da roleta
 	if(global.buff_timer > 0){
 		draw_set_color(c_yellow);
-		draw_text(_x, _y + 66, global.buff_nome + " (" + string(ceil(global.buff_timer / 60)) + "s)");
+		draw_text(_x, _dy + max(20, _lh), global.buff_nome + " (" + string(ceil(global.buff_timer / 60)) + "s)");
 	}
 	
 	//Dicas de controle
@@ -46,15 +50,6 @@ if(sala_de_jogo()){
 	draw_set_color(c_gray);
 	draw_text(_gw - 16, 16, "A/D mover  |  ESPAÇO pular  |  F ou clique: soco  |  SHIFT ou botão direito: dash  |  E interagir  |  ESC pausa");
 	draw_set_halign(fa_left);
-}
-
-//=== Overlay de debug ===
-if(global.debug && mostrar_debug){
-	draw_set_color(c_lime);
-	draw_set_valign(fa_bottom);
-	draw_text(16, _gh - 16, "[DEBUG] sala: " + room_get_name(room)
-		+ "\n1 sala anterior | 2 proxima sala | 3 reiniciar sala | 4 +10 moedas | 5 +3 almas"
-		+ "\n6 curar | 7 menu | 8 morrer | 9 reset total | 0 esconde isto");
 }
 
 //=== MENU DE PAUSE ===
@@ -81,6 +76,7 @@ if(pausa){
 }
 
 //Volta o estado padrão do desenho
+draw_set_font(-1);
 draw_set_valign(fa_top);
 draw_set_halign(fa_left);
 draw_set_color(c_white);

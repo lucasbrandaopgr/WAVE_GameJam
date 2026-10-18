@@ -2,6 +2,7 @@
 if(global.pausado){
 	velh	= 0;
 	bloq	= 8;
+	sprite_index = sPlayer;
 	exit;
 }
 
@@ -49,6 +50,10 @@ if(dash_t > 0){
 	velh = dir * 7;
 	velv = 0;
 }
+
+//Troca de sprite: parado x correndo (depois do dash, pra ele contar também)
+sprite_index = (velh != 0) ? sPlayer_run : sPlayer;
+image_xscale = dir;
 
 //Invencibilidade: pisca enquanto dura
 if(invul > 0) invul--;

@@ -94,26 +94,3 @@ if(!sala_de_jogo()){
 	
 	if(keyboard_check_pressed(vk_escape)) pausa_fechar();
 }
-
-//=== ATALHOS DE DEBUG (teclas numéricas da linha de cima) ===
-if(global.debug && !global.pausado){
-	if(keyboard_check_pressed(ord("1"))){
-		var _ra = room_previous(room);
-		if(_ra != -1) room_goto(_ra);
-	}
-	if(keyboard_check_pressed(ord("2"))){
-		var _rb = room_next(room);
-		if(_rb != -1) room_goto(_rb);
-	}
-	if(keyboard_check_pressed(ord("3"))) room_restart();
-	if(keyboard_check_pressed(ord("4"))) global.moedas += 10;
-	if(keyboard_check_pressed(ord("5"))) global.almas += 3;
-	if(keyboard_check_pressed(ord("6"))) global.hp = global.hp_max;
-	if(keyboard_check_pressed(ord("7"))) room_goto(rMenu);
-	if(keyboard_check_pressed(ord("8")) && sala_de_jogo()) game_morrer();
-	if(keyboard_check_pressed(ord("9"))){
-		game_reset();
-		room_restart();
-	}
-	if(keyboard_check_pressed(ord("0"))) mostrar_debug = !mostrar_debug;
-}

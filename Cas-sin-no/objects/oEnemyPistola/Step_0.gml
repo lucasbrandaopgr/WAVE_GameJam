@@ -12,6 +12,7 @@ if(instance_exists(oPlayer) && !global.pausado && stun <= 0){
 		tiro_cd--;
 		if(tiro_cd <= 0){
 			tiro_cd = 100;
+			atirando = 15;
 			audio_play_sound(mTiro, 1, false);
 			
 			var _b = instance_create_depth(x + dir * 18, y - 18, depth - 1, oBala);
@@ -23,3 +24,11 @@ if(instance_exists(oPlayer) && !global.pausado && stun <= 0){
 
 //Roda o Step do pai (gravidade, patrulha, dano de contato)
 event_inherited();
+
+//Troca de sprite: atirando x andando
+if(atirando > 0){
+	atirando--;
+	sprite_index = armaatirando;
+}else{
+	sprite_index = SAmanda;	//Troque pelo nome do seu sprite de movimento
+}

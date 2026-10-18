@@ -10,4 +10,6 @@ moedas_min	= 2;
 moedas_max	= 4;
 cor_base	= make_colour_rgb(255, 230, 140);
 
+atirando = 0;	//Frames que o sprite de tiro fica na tela
+
 escalar();

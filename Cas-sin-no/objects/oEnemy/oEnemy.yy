@@ -34,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sEnemy",
-    "path":"sprites/sEnemy/sEnemy.yy",
+    "name":"SBill",
+    "path":"sprites/SBill/SBill.yy",
   },
   "spriteMaskId":null,
   "visible":true,

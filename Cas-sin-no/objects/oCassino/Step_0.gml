@@ -1,3 +1,9 @@
+if(is_undefined(g)){
+	modal_fechou();
+	instance_destroy();
+	exit;
+}
+
 global.pausado = true;
 g.passo();
 
