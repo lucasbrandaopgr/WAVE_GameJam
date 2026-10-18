@@ -5,25 +5,23 @@ var _cx = _gw / 2;
 draw_set_color(c_black);
 draw_rectangle(0, 0, _gw, _gh, false);
 
-draw_set_halign(fa_center);
-draw_set_valign(fa_middle);
 draw_set_alpha(alpha);
 
-draw_set_color(c_red);
-draw_text_transformed(_cx, _gh * .28, "VOCÊ MORREU", 4, 4, 0);
-
-draw_set_color(c_gray);
-draw_text_transformed(_cx, _gh * .28 + 70, frase, 1.5, 1.5, 0);
-
-draw_set_color(c_white);
-draw_text_transformed(_cx, _gh * .55, "Mortes: " + string(global.mortes), 2, 2, 0);
-draw_text(_cx, _gh * .55 + 50, "Almas: " + string(global.almas) + "     Moedas: " + string(global.moedas));
+ui_texto(_cx, _gh * .26, "VOCÊ MORREU", c_red, 4);
+draw_set_alpha(alpha);
+ui_texto(_cx, _gh * .26 + 70, frase, c_gray, 1.5);
+draw_set_alpha(alpha);
+ui_texto(_cx, _gh * .5, "Mortes: " + string(global.mortes), c_white, 2);
+draw_set_alpha(alpha);
+ui_texto(_cx, _gh * .5 + 50, "Almas: " + string(global.almas) + "     Moedas: " + string(global.moedas) + "     Andar: " + string(global.nivel + 1), c_white, 1);
 
 if(timer > 60){
-	draw_set_color(c_yellow);
-	draw_text_transformed(_cx, _gh * .8, "ENTER: mais uma vez", 1.5, 1.5, 0);
-	draw_set_color(c_dkgray);
-	draw_text(_cx, _gh * .8 + 40, "ESC: menu");
+	draw_set_alpha(1);
+	var _b0 = rect_botao(0);
+	var _b1 = rect_botao(1);
+	ui_desenhar_botao(_b0.x, _b0.y, _b0.w, _b0.h, "Mais uma vez", true, ui_sobre(_b0.x, _b0.y, _b0.w, _b0.h), 1.2);
+	ui_desenhar_botao(_b1.x, _b1.y, _b1.w, _b1.h, "Menu", true, ui_sobre(_b1.x, _b1.y, _b1.w, _b1.h), 1.2);
+	ui_texto(_cx, _gh * .78 + 90, "ENTER: mais uma vez   |   ESC: menu", c_dkgray, 1);
 }
 
 //Volta o estado padrão do desenho

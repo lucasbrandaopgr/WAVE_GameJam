@@ -35,9 +35,9 @@ switch(estado){
 	
 	case 2:	//Mostra o resultado e depois libera o jogo
 		timer--;
-		if(timer <= 0 || keyboard_check_pressed(ord("E"))){
-			estado			= 0;
-			global.pausado	= false;
+		if(timer <= 0 || keyboard_check_pressed(ord("E")) || mouse_check_button_pressed(mb_left)){
+			estado	= 0;
+			modal_fechou();
 		}
 	break;
 }

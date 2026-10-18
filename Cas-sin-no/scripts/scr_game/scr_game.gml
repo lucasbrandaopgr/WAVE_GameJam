@@ -11,6 +11,12 @@ function game_reset(){
 	global.almas		= 0;
 	global.dmg_bonus	= 0;
 	global.mortes		= 0;
+	global.nivel		= 0;	//Andar atual (a cada volta completa os inimigos ficam mais fortes)
+	
+	//Melhorias compradas do velho
+	global.alcance_bonus	= 0;	//+20 px no soco por nível
+	global.dash_bonus		= 0;	//-10 frames no recarregar do dash por nível
+	global.ima_bonus		= 0;	//+40 px no ímã de moedas por nível
 	
 	//Efeitos temporários da roleta
 	global.buff_vel		= 1;
@@ -20,6 +26,7 @@ function game_reset(){
 	
 	//Quando true, tudo congela (roleta girando, loja do velho aberta)
 	global.pausado		= false;
+	global.esc_lock		= 0;	//Impede que o ESC que fecha uma janela abra o pause no mesmo frame
 }
 
 //Sala de jogo = onde aparece o HUD e toca a música de gameplay
@@ -58,6 +65,10 @@ function game_salvar(_sala){
 	ini_write_real("save", "almas", global.almas);
 	ini_write_real("save", "dmg_bonus", global.dmg_bonus);
 	ini_write_real("save", "mortes", global.mortes);
+	ini_write_real("save", "nivel", global.nivel);
+	ini_write_real("save", "alcance_bonus", global.alcance_bonus);
+	ini_write_real("save", "dash_bonus", global.dash_bonus);
+	ini_write_real("save", "ima_bonus", global.ima_bonus);
 	ini_write_string("save", "sala", room_get_name(_sala));
 	ini_close();
 }
@@ -78,6 +89,10 @@ function game_carregar(){
 	global.almas		= ini_read_real("save", "almas", 0);
 	global.dmg_bonus	= ini_read_real("save", "dmg_bonus", 0);
 	global.mortes		= ini_read_real("save", "mortes", 0);
+	global.nivel		= ini_read_real("save", "nivel", 0);
+	global.alcance_bonus	= ini_read_real("save", "alcance_bonus", 0);
+	global.dash_bonus		= ini_read_real("save", "dash_bonus", 0);
+	global.ima_bonus		= ini_read_real("save", "ima_bonus", 0);
 	var _nome			= ini_read_string("save", "sala", "rVelho");
 	ini_close();
 	
@@ -86,4 +101,19 @@ function game_carregar(){
 	var _sala = asset_get_index(_nome);
 	if(_sala == -1 || !room_exists(_sala)) _sala = rVelho;
 	room_goto(_sala);
+}
+
+
+//Texto que sobe e some (dano, moedas, almas...). Coordenadas do mundo.
+function popup(_x, _y, _txt, _cor = c_white){
+	var _t = instance_create_depth(_x, _y, -10000, oTexto);
+	_t.texto	= _txt;
+	_t.cor		= _cor;
+	return _t;
+}
+
+//Fecha uma janela (loja, cassino...) e avisa o oGame pra não abrir o pause com o mesmo ESC
+function modal_fechou(){
+	global.pausado	= false;
+	global.esc_lock	= 1;
 }

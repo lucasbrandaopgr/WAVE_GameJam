@@ -14,8 +14,9 @@ if(instance_exists(oPlayer) && !global.pausado && stun <= 0){
 			tiro_cd = 100;
 			audio_play_sound(mTiro, 1, false);
 			
-			var _b = instance_create_layer(x + dir * 18, y - 18, layer, oBala);
+			var _b = instance_create_depth(x + dir * 18, y - 18, depth - 1, oBala);
 			_b.dir_tiro = dir;
+			_b.dano		= dano;
 		}
 	}
 }

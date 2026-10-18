@@ -1,4 +1,7 @@
-//Congelado (roleta / loja)
+//Fica vermelho quando leva dano
+image_blend = (stun > 0) ? c_red : cor_base;
+
+//Congelado (roleta / loja / pause)
 if(global.pausado){
 	velh = 0;
 	exit;
@@ -25,4 +28,4 @@ if(_chao){
 
 //Encostou no player? Dá dano
 var _p = instance_place(x, y, oPlayer);
-if(_p) _p.levar_dano(1);
+if(_p) _p.levar_dano(dano);

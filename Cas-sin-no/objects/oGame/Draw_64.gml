@@ -20,13 +20,32 @@ if(sala_de_jogo()){
 	draw_set_color(c_white);
 	draw_text(_x, _y + 24, "HP " + string(global.hp) + "/" + string(global.hp_max)
 		+ "     Moedas: " + string(global.moedas)
-		+ "     Almas: " + string(global.almas));
+		+ "     Almas: " + string(global.almas)
+		+ "     Andar: " + string(global.nivel + 1));
+	
+	//Barra do dash
+	if(instance_exists(oPlayer)){
+		var _dmax	= max(20, 60 - global.dash_bonus * 10);
+		var _pronto	= 1 - clamp(oPlayer.dash_cd / _dmax, 0, 1);
+		draw_set_color(c_black);
+		draw_rectangle(_x - 1, _y + 46, _x + 101, _y + 56, false);
+		draw_set_color((_pronto >= 1) ? c_aqua : c_teal);
+		draw_rectangle(_x, _y + 47, _x + 100 * _pronto, _y + 55, false);
+		draw_set_color(c_white);
+		draw_text(_x + 108, _y + 44, (_pronto >= 1) ? "DASH pronto" : "DASH");
+	}
 	
 	//Efeito ativo da roleta
 	if(global.buff_timer > 0){
 		draw_set_color(c_yellow);
-		draw_text(_x, _y + 46, global.buff_nome + " (" + string(ceil(global.buff_timer / 60)) + "s)");
+		draw_text(_x, _y + 66, global.buff_nome + " (" + string(ceil(global.buff_timer / 60)) + "s)");
 	}
+	
+	//Dicas de controle
+	draw_set_halign(fa_right);
+	draw_set_color(c_gray);
+	draw_text(_gw - 16, 16, "A/D mover  |  ESPAÇO pular  |  F ou clique: soco  |  SHIFT ou botão direito: dash  |  E interagir  |  ESC pausa");
+	draw_set_halign(fa_left);
 }
 
 //=== Overlay de debug ===
@@ -38,6 +57,30 @@ if(global.debug && mostrar_debug){
 		+ "\n6 curar | 7 menu | 8 morrer | 9 reset total | 0 esconde isto");
 }
 
+//=== MENU DE PAUSE ===
+if(pausa){
+	draw_set_alpha(.75);
+	draw_set_color(c_black);
+	draw_rectangle(0, 0, _gw, _gh, false);
+	draw_set_alpha(1);
+	
+	ui_texto(_gw / 2, 170, "PAUSADO", c_yellow, 4);
+	ui_texto(_gw / 2, 225, "HP " + string(global.hp) + "/" + string(global.hp_max) + "   Moedas: " + string(global.moedas)
+		+ "   Almas: " + string(global.almas) + "   Andar: " + string(global.nivel + 1), c_ltgray, 1.2);
+	
+	for(var i = 0; i < 4; i++){
+		var _r		= pausa_rect(i);
+		var _txt	= pausa_itens[i];
+		if(i == 2) _txt = "-    Volume: " + string(round(global.volume * 100)) + "%    +";
+		ui_desenhar_botao(_r.x, _r.y, _r.w, _r.h, _txt, true, (i == pausa_sel), 1.4);
+	}
+	
+	if(aviso_salvo > 0) ui_texto(_gw / 2, 270 + 4 * 62 + 10, "Jogo salvo!", c_lime, 1.3);
+	
+	ui_texto(_gw / 2, _gh - 40, "Mouse ou W/S + ENTER   |   A/D ajusta o volume   |   ESC continua", c_dkgray, 1);
+}
+
 //Volta o estado padrão do desenho
 draw_set_valign(fa_top);
+draw_set_halign(fa_left);
 draw_set_color(c_white);

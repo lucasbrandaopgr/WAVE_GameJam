@@ -6,7 +6,7 @@ vida--;
 //Acertou o player?
 var _p = collision_circle(x, y, 4, oPlayer, false, true);
 if(_p){
-	_p.levar_dano(1);
+	_p.levar_dano(dano);
 	instance_destroy();
 	exit;
 }

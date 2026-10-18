@@ -1,3 +1,6 @@
+//Congelado (pause, roleta, loja, cassino): não se mexe nem cai
+if(global.pausado) exit;
+
 //Fazendo a colizão horizontal
 //Checando se estou colidindo com a parede
 var _col	= instance_place(x + velh, y, oChao);
